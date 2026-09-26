@@ -34,7 +34,10 @@ public class MainActivityTest {
                 assertFalse(b.isEnabled());
                 assertFalse(b.hasOnClickListeners());
             }
-            Button donate = a.findViewById(R.id.homeDonate);\n            assertTrue(donate.isEnabled());\n            assertTrue(donate.hasOnClickListeners());\n            capture(a, "home");
+            Button donate = a.findViewById(R.id.homeDonate);
+            assertTrue(donate.isEnabled());
+            assertTrue(donate.hasOnClickListeners());
+            capture(a, "home");
             a.findViewById(R.id.homeFx).performClick();
             assertEquals(View.VISIBLE, a.findViewById(R.id.workspacePage).getVisibility());
             assertEquals(View.GONE, a.findViewById(R.id.homePage).getVisibility());
