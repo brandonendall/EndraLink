@@ -29,12 +29,12 @@ public class MainActivityTest {
             MainActivity a = controller.get();
             assertEquals(View.VISIBLE, a.findViewById(R.id.homePage).getVisibility());
             assertEquals(View.GONE, a.findViewById(R.id.workspacePage).getVisibility());
-            for (int id : new int[]{R.id.homeNspire, R.id.homePrime, R.id.homeDonate}) {
+            for (int id : new int[]{R.id.homeNspire, R.id.homePrime}) {
                 Button b = a.findViewById(id);
                 assertFalse(b.isEnabled());
                 assertFalse(b.hasOnClickListeners());
             }
-            capture(a, "home");
+            Button donate = a.findViewById(R.id.homeDonate);\n            assertTrue(donate.isEnabled());\n            assertTrue(donate.hasOnClickListeners());\n            capture(a, "home");
             a.findViewById(R.id.homeFx).performClick();
             assertEquals(View.VISIBLE, a.findViewById(R.id.workspacePage).getVisibility());
             assertEquals(View.GONE, a.findViewById(R.id.homePage).getVisibility());
