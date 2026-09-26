@@ -107,6 +107,15 @@ class MainActivity : AppCompatActivity() {
             DebugLog.event("NAVIGATION", "fx_cg50")
         }
         findViewById<Button>(R.id.homeBack).setOnClickListener { navigation.handleOnBackPressed() }
+        findViewById<Button>(R.id.homeDonate).setOnClickListener {
+            DebugLog.event("TAP", "support_endralink")
+            val supportPage = Intent(Intent.ACTION_VIEW, Uri.parse("https://ko-fi.com/endralink"))
+            try {
+                startActivity(supportPage)
+            } catch (e: ActivityNotFoundException) {
+                Toast.makeText(this, "No browser is available to open the EndraLink support page.", Toast.LENGTH_LONG).show()
+            }
+        }
         if (savedInstanceState?.getBoolean("workspace") == true) findViewById<Button>(R.id.homeFx).performClick()
         WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightNavigationBars = false
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.page)) { view, insets ->
