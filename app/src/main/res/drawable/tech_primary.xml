@@ -1,5 +1,5 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
- <item android:state_enabled="false"><shape><solid android:color="#111B24"/><stroke android:width="1dp" android:color="#425563"/><corners android:radius="10dp"/></shape></item>
- <item android:state_pressed="true"><shape><gradient android:startColor="#75F3FF" android:endColor="#087B9E" android:angle="270"/><stroke android:width="2dp" android:color="#D8FBFF"/><corners android:radius="10dp"/></shape></item>
- <item><shape><gradient android:startColor="#46DFF4" android:centerColor="#16B9D8" android:endColor="#087A9E" android:angle="270"/><stroke android:width="2dp" android:color="#9EF7FF"/><corners android:radius="10dp"/></shape></item>
+ <item android:state_enabled="false"><shape><solid android:color="#111B24"/><stroke android:width="2dp" android:color="#536B7A"/><corners android:radius="4dp"/></shape></item>
+ <item android:state_pressed="true"><shape><gradient android:startColor="#75F3FF" android:endColor="#087B9E" android:angle="270"/><stroke android:width="3dp" android:color="#E1FDFF"/><corners android:radius="4dp"/></shape></item>
+ <item><shape><gradient android:startColor="#52E8F8" android:centerColor="#16BCD9" android:endColor="#08799B" android:angle="270"/><stroke android:width="2dp" android:color="#B9FAFF"/><corners android:radius="4dp"/></shape></item>
 </selector>
