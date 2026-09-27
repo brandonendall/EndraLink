@@ -29,21 +29,39 @@ public class MainActivityTest {
             MainActivity a = controller.get();
             assertEquals(View.VISIBLE, a.findViewById(R.id.homePage).getVisibility());
             assertEquals(View.GONE, a.findViewById(R.id.workspacePage).getVisibility());
-            for (int id : new int[]{R.id.homeNspire, R.id.homePrime, R.id.homeDonate}) {
+            for (int id : new int[]{R.id.homeNspire, R.id.homePrime}) {
                 Button b = a.findViewById(id);
                 assertFalse(b.isEnabled());
                 assertFalse(b.hasOnClickListeners());
             }
+            Button donate = a.findViewById(R.id.homeDonate);
+            assertTrue(donate.isEnabled());
+            assertTrue(donate.hasOnClickListeners());
             capture(a, "home");
+            captureAt(a, "home_phone_tall", 720, 1600);
+            captureAt(a, "home_tablet", 1200, 1600);
             a.findViewById(R.id.homeFx).performClick();
             assertEquals(View.VISIBLE, a.findViewById(R.id.workspacePage).getVisibility());
             assertEquals(View.GONE, a.findViewById(R.id.homePage).getVisibility());
             assertTrue(a.findViewById(R.id.connect).isEnabled());
             assertFalse(a.findViewById(R.id.copy).isEnabled());
             capture(a, "workspace");
+            captureAt(a, "workspace_phone_tall", 720, 1600);
+            captureAt(a, "workspace_tablet", 1200, 1600);
             a.getOnBackPressedDispatcher().onBackPressed();
             assertEquals(View.VISIBLE, a.findViewById(R.id.homePage).getVisibility());
         }
+    }
+    /** Render additional phone/tablet sizes to verify the locked composition remains intact. */
+    private void captureAt(MainActivity activity, String name, int width, int height) throws Exception {
+        View root = activity.findViewById(R.id.page);
+        root.measure(View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.EXACTLY), View.MeasureSpec.makeMeasureSpec(height, View.MeasureSpec.EXACTLY));
+        root.layout(0, 0, width, height);
+        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        root.draw(new Canvas(bitmap));
+        File directory = new File("build/reports/screenshots"); directory.mkdirs();
+        try (FileOutputStream out = new FileOutputStream(new File(directory, name + ".png"))) { bitmap.compress(Bitmap.CompressFormat.PNG, 100, out); }
+        bitmap.recycle();
     }
     /** Render the actual activity views for visual inspection of this build. */
     private void capture(MainActivity activity, String name) throws Exception {

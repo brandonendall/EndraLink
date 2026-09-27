@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity() {
         DebugLog.start(this)
         DebugLog.event("ACTIVITY_CREATE", "restored=" + (savedInstanceState != null))
         setContentView(R.layout.activity_main)
-        findViewById<ArtworkView>(R.id.homeArtwork).configure(R.drawable.hydra_home, 0f, 0.725f)
+        findViewById<ArtworkView>(R.id.homeArtwork).configure(R.drawable.hydra_home, 0f, 0.49f)
         findViewById<ArtworkView>(R.id.workspaceHeader).configure(R.drawable.circuit_workspace, 0.07f, 0.225f)
         findViewById<ArtworkView>(R.id.workspaceFooter).configure(R.drawable.circuit_workspace, 0.67f, 1f)
         val navigation = object : OnBackPressedCallback(false) {
@@ -107,6 +107,15 @@ class MainActivity : AppCompatActivity() {
             DebugLog.event("NAVIGATION", "fx_cg50")
         }
         findViewById<Button>(R.id.homeBack).setOnClickListener { navigation.handleOnBackPressed() }
+        findViewById<Button>(R.id.homeDonate).setOnClickListener {
+            DebugLog.event("TAP", "support_endralink")
+            val supportPage = Intent(Intent.ACTION_VIEW, Uri.parse("https://ko-fi.com/endralink"))
+            try {
+                startActivity(supportPage)
+            } catch (e: ActivityNotFoundException) {
+                Toast.makeText(this, "No browser is available to open the EndraLink support page.", Toast.LENGTH_LONG).show()
+            }
+        }
         if (savedInstanceState?.getBoolean("workspace") == true) findViewById<Button>(R.id.homeFx).performClick()
         WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightNavigationBars = false
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.page)) { view, insets ->
@@ -935,7 +944,8 @@ class MainActivity : AppCompatActivity() {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == 1002) {
-            requestAllFilesAccessIfNeeded()
+            // Respect the notification choice; storage access is requested only from file features.
+            return
         } else if (requestCode == 1005 && hasFullStorageAccess()) {
             openFullStorageRoot()
         }
@@ -1035,7 +1045,7 @@ class MainActivity : AppCompatActivity() {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 1002)
             return
         }
-        requestAllFilesAccessIfNeeded()
+        // Do not force All files access at startup. The phone-folder picker requests access on demand.
     }
 
     private fun requestAllFilesAccessIfNeeded() {
