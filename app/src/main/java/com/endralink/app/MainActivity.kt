@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity() {
         DebugLog.start(this)
         DebugLog.event("ACTIVITY_CREATE", "restored=" + (savedInstanceState != null))
         setContentView(R.layout.activity_main)
-        findViewById<ArtworkView>(R.id.homeArtwork).configure(R.drawable.hydra_home, 0f, 0.38f)
+        findViewById<ArtworkView>(R.id.homeArtwork).configure(R.drawable.hydra_home, 0f, if (resources.configuration.smallestScreenWidthDp >= 600) 0.49f else 0.34f)
         findViewById<ArtworkView>(R.id.workspaceHeader).configure(R.drawable.circuit_workspace, 0.07f, 0.225f)
         findViewById<ArtworkView>(R.id.workspaceFooter).configure(R.drawable.circuit_workspace, 0.67f, 1f)
         val navigation = object : OnBackPressedCallback(false) {
@@ -103,6 +103,9 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.homeFx).setOnClickListener {
             findViewById<View>(R.id.homePage).visibility = View.GONE
             findViewById<View>(R.id.workspacePage).visibility = View.VISIBLE
+            if (resources.configuration.smallestScreenWidthDp < 600) {
+                findViewById<ScrollView>(R.id.workspacePage).post { findViewById<ScrollView>(R.id.workspacePage).scrollTo(0, 0) }
+            }
             navigation.isEnabled = true
             DebugLog.event("NAVIGATION", "fx_cg50")
         }
