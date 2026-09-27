@@ -4,7 +4,7 @@
 
     <!-- Home is deliberately non-scrolling: the artwork flexes so all actions stay visible. -->
     <LinearLayout android:id="@+id/homePage" android:layout_width="match_parent" android:layout_height="match_parent"
-        android:orientation="vertical" android:gravity="center_horizontal">
+        android:orientation="vertical" android:gravity="center_horizontal" android:background="@drawable/home_cave_continuation">
         <com.endralink.app.ArtworkView android:id="@+id/homeArtwork"
             android:layout_width="match_parent" android:layout_height="wrap_content"/>
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
