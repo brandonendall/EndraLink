@@ -55,9 +55,9 @@
                     android:layout_width="match_parent" android:layout_height="4dp" android:layout_marginTop="6dp"
                     android:indeterminateTint="@color/cyan" android:visibility="gone"/>
                 <Button android:id="@+id/connect" style="@style/TechButtonPrimary" android:layout_width="match_parent"
-                    android:layout_height="38dp" android:minHeight="0dp" android:layout_marginTop="4dp" android:text="Connect fx-CG50"/>
+                    android:layout_height="44dp" android:minHeight="0dp" android:padding="4dp" android:textSize="13sp" android:layout_marginTop="4dp" android:text="Connect fx-CG50"/>
                 <Button android:id="@+id/browse" style="@style/TechButton" android:layout_width="match_parent"
-                    android:layout_height="38dp" android:minHeight="0dp" android:text="Browse calculator" android:enabled="false"/>
+                    android:layout_height="44dp" android:minHeight="0dp" android:padding="4dp" android:textSize="13sp" android:text="Browse calculator" android:enabled="false"/>
             </LinearLayout>
 
             <LinearLayout android:id="@+id/browserPanel" android:layout_width="match_parent" android:layout_height="wrap_content"
@@ -96,14 +96,14 @@
                 <LinearLayout android:id="@+id/phoneStorageBody" android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:orientation="vertical">
                     <Button android:id="@+id/openPhone" style="@style/TechButton"
-                        android:layout_width="match_parent" android:layout_height="40dp" android:minHeight="0dp" android:textSize="12sp" android:text="Choose phone folder"/>
+                        android:layout_width="match_parent" android:layout_height="44dp" android:minHeight="0dp" android:padding="4dp" android:textSize="12sp" android:text="Choose phone folder"/>
                     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
                         <Button android:id="@+id/phoneUp" style="@style/TechButton" android:layout_width="0dp" android:layout_weight="1"
-                            android:layout_height="38dp" android:minHeight="0dp" android:textSize="12sp" android:text="Up" android:enabled="false"/>
+                            android:layout_height="42dp" android:minHeight="0dp" android:padding="2dp" android:textSize="11sp" android:text="Up" android:enabled="false"/>
                         <Button android:id="@+id/clearQueue" style="@style/TechButton" android:layout_width="0dp" android:layout_weight="1"
-                            android:layout_height="38dp" android:minHeight="0dp" android:textSize="12sp" android:layout_marginStart="5dp" android:text="Clear" android:enabled="false"/>
+                            android:layout_height="42dp" android:minHeight="0dp" android:padding="2dp" android:textSize="11sp" android:layout_marginStart="5dp" android:text="Clear" android:enabled="false"/>
                         <Button android:id="@+id/collapsePhoneStorage" style="@style/TechButton" android:layout_width="0dp" android:layout_weight="1"
-                            android:layout_height="38dp" android:minHeight="0dp" android:textSize="11sp" android:layout_marginStart="5dp" android:text="Collapse"/>
+                            android:layout_height="42dp" android:minHeight="0dp" android:padding="2dp" android:textSize="10sp" android:layout_marginStart="5dp" android:text="Collapse"/>
                     </LinearLayout>
                     <TextView android:id="@+id/phonePath" android:layout_width="match_parent" android:layout_height="wrap_content"
                         android:text="Grant a phone folder once, then browse it here." android:textColor="@color/cyan"
