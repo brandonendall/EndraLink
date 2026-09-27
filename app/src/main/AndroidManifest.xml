@@ -4,8 +4,12 @@
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32"/>
     <application android:theme="@style/Theme.EndraLink" android:label="EndraLink" android:icon="@drawable/endralink_logo" android:roundIcon="@drawable/endralink_logo">
-        <activity android:name=".MainActivity" android:icon="@drawable/endralink_logo" android:screenOrientation="portrait" android:exported="true">
+        <activity android:name=".MainActivity" android:icon="@drawable/endralink_logo" android:screenOrientation="portrait" android:launchMode="singleTop" android:exported="true">
             <intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter>
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"/>
+            </intent-filter>
+            <meta-data android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" android:resource="@xml/fx_cg50_filter"/>
         </activity>
     </application>
 </manifest>
