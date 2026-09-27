@@ -176,7 +176,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.browse).setOnClickListener {
             DebugLog.event("TAP", "browse_calculator")
             folderStack.clear()
-            browseDirectory(0)
+            browseDirectory(0, activeDevice?.let { it.vendorId == 0x07cf && it.productId == 0x6102 } == true)
         }
         findViewById<Button>(R.id.upFolder).setOnClickListener {
             DebugLog.event("TAP", "parent_folder")
@@ -206,6 +206,33 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.exportLog).setOnClickListener { requestLogExport() }
         restorePhoneAccess()
         requestInitialPermissionsIfNeeded()
+        handleUsbAttachIntent(intent)
+    }
+
+    /** Automatically request access when Android launches or reuses EndraLink for an attached fx-CG50. */
+    private fun handleUsbAttachIntent(source: Intent?) {
+        if (source?.action != UsbManager.ACTION_USB_DEVICE_ATTACHED || busy || connection != null || pendingDevice != null) return
+        val device = if (Build.VERSION.SDK_INT >= 33)
+            source.getParcelableExtra(UsbManager.EXTRA_DEVICE, UsbDevice::class.java)
+        else @Suppress("DEPRECATION") source.getParcelableExtra<UsbDevice>(UsbManager.EXTRA_DEVICE)
+        if (device == null) {
+            DebugLog.event("USB_ATTACH_IGNORED", "missing device")
+            return
+        }
+        logDevice("USB_ATTACH", device)
+        if (device.vendorId == 0x07cf && device.productId == 0x6102 && storageInterface(device) != null) {
+            DebugLog.event("USB_AUTO_CONNECT", "fx-CG50 attach")
+            requestAccess(device)
+        } else {
+            DebugLog.event("USB_ATTACH_IGNORED", "not supported fx-CG50")
+        }
+    }
+
+    /** Receive a new USB attach intent without recreating the locked visual activity. */
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        handleUsbAttachIntent(intent)
     }
 
     /** Require a SCSI Bulk-Only mass-storage interface and both bulk endpoint directions. */
@@ -329,7 +356,7 @@ class MainActivity : AppCompatActivity() {
                     details.text = describe(device) + "\nPermission granted. Select files and transfer directly, or Browse calculator to choose a folder."
                     if (pendingTransferAfterConnect && selectedFiles.isNotEmpty()) {
                         pendingTransferAfterConnect = false
-                        main.post { prepareStorageForTransfer(false) }
+                        main.post { prepareStorageForTransfer(device.vendorId == 0x07cf && device.productId == 0x6102) }
                     }
                 }
             }
@@ -1296,7 +1323,7 @@ class MainActivity : AppCompatActivity() {
         }
         val session = storage
         if (session == null) {
-            prepareStorageForTransfer(false)
+            prepareStorageForTransfer(activeDevice?.let { it.vendorId == 0x07cf && it.productId == 0x6102 } == true)
         } else {
             preflightTransfer(session)
         }
