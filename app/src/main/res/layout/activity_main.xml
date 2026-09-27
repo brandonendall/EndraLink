@@ -10,22 +10,22 @@
             android:minHeight="120dp"/>
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
             android:orientation="horizontal" android:paddingStart="@dimen/screen_gutter"
-            android:paddingEnd="@dimen/screen_gutter" android:paddingTop="8dp" android:paddingBottom="4dp"
+            android:paddingEnd="@dimen/screen_gutter" android:paddingTop="2dp" android:paddingBottom="2dp"
             android:baselineAligned="false">
             <Button android:id="@+id/homeFx" style="@style/TechButtonPrimary" android:layout_width="0dp"
-                android:layout_weight="1" android:layout_height="72dp" android:minHeight="0dp"
+                android:layout_weight="1" android:layout_height="62dp" android:minHeight="0dp"
                 android:text="fx-CG50" android:contentDescription="Open fx-CG50 workspace"/>
             <Button android:id="@+id/homeNspire" style="@style/TechButton" android:layout_width="0dp"
-                android:layout_weight="1" android:layout_height="72dp" android:minHeight="0dp"
-                android:layout_marginStart="8dp" android:text="TI-Nspire\nComing later" android:textSize="12sp" android:enabled="false"/>
+                android:layout_weight="1" android:layout_height="62dp" android:minHeight="0dp"
+                android:layout_marginStart="5dp" android:text="TI-Nspire\nComing later" android:textSize="11sp" android:enabled="false"/>
             <Button android:id="@+id/homePrime" style="@style/TechButton" android:layout_width="0dp"
-                android:layout_weight="1" android:layout_height="72dp" android:minHeight="0dp"
-                android:layout_marginStart="8dp" android:text="HP Prime\nComing later" android:textSize="12sp" android:enabled="false"/>
+                android:layout_weight="1" android:layout_height="62dp" android:minHeight="0dp"
+                android:layout_marginStart="5dp" android:text="HP Prime\nComing later" android:textSize="11sp" android:enabled="false"/>
         </LinearLayout>
         <Button android:id="@+id/homeDonate" style="@style/TechButtonPrimary"
-            android:layout_width="match_parent" android:layout_height="56dp" android:minHeight="0dp"
+            android:layout_width="match_parent" android:layout_height="62dp" android:minHeight="0dp"
             android:layout_marginStart="@dimen/screen_gutter" android:layout_marginEnd="@dimen/screen_gutter"
-            android:layout_marginTop="4dp" android:text="♡  Support EndraLink"/>
+            android:layout_marginTop="2dp" android:text="♡  DONATE"/>
         <TextView android:id="@+id/homeVersion" android:layout_width="match_parent" android:layout_height="28dp"
             android:gravity="center" android:text="EndraLink" android:textColor="@color/muted" android:textSize="10sp"/>
     </LinearLayout>
