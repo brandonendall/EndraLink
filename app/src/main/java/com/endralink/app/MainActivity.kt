@@ -944,7 +944,8 @@ class MainActivity : AppCompatActivity() {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == 1002) {
-            requestAllFilesAccessIfNeeded()
+            // Respect the notification choice; storage access is requested only from file features.
+            return
         } else if (requestCode == 1005 && hasFullStorageAccess()) {
             openFullStorageRoot()
         }
@@ -1044,7 +1045,7 @@ class MainActivity : AppCompatActivity() {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 1002)
             return
         }
-        requestAllFilesAccessIfNeeded()
+        // Do not force All files access at startup. The phone-folder picker requests access on demand.
     }
 
     private fun requestAllFilesAccessIfNeeded() {
