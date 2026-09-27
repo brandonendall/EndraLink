@@ -140,7 +140,7 @@
                 android:text="Two-way EndraLink file manager enabled. Existing files require confirmation before overwrite."
                 android:textSize="12sp" android:gravity="center" android:textColor="@color/muted" android:paddingBottom="10dp"/>
             <com.endralink.app.ArtworkView android:id="@+id/workspaceFooter"
-                android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                android:layout_width="match_parent" android:layout_height="72dp"/>
         </LinearLayout>
     </ScrollView>
 </FrameLayout>
