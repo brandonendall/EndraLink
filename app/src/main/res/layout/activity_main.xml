@@ -36,29 +36,29 @@
             android:orientation="vertical" android:paddingStart="@dimen/workspace_gutter"
             android:paddingEnd="@dimen/workspace_gutter" android:paddingTop="6dp" android:paddingBottom="20dp"
             android:gravity="center_horizontal">
-            <Button android:id="@+id/homeBack" style="@style/TechButton" android:layout_width="88dp" android:layout_height="44dp" android:layout_gravity="end" android:minHeight="0dp" android:minWidth="0dp" android:gravity="center" android:includeFontPadding="true" android:padding="0dp" android:text="HOME" android:textSize="14sp" android:textStyle="bold" android:textColor="#FFFFFF"/>
+            <Button android:id="@+id/homeBack" style="@style/TechButton" android:layout_width="82dp" android:layout_height="40dp" android:layout_gravity="end" android:minHeight="0dp" android:minWidth="0dp" android:gravity="center" android:includeFontPadding="true" android:padding="0dp" android:text="HOME" android:textSize="13sp" android:textStyle="bold" android:textColor="#FFFFFF"/>
             <com.endralink.app.ArtworkView android:id="@+id/workspaceHeader"
                 android:layout_width="match_parent" android:layout_height="wrap_content"/>
             <TextView android:id="@+id/version" android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:text="fx-CG50  •  FILE TRANSFER" android:gravity="center" android:textStyle="bold" android:textSize="15sp" android:letterSpacing="0.08" android:textColor="@color/cyan"/>
 
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp"
-                android:background="@drawable/panel" android:padding="10dp" android:orientation="vertical">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp"
+                android:background="@drawable/panel" android:padding="8dp" android:orientation="vertical">
                 <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="USB CONNECTION"
                     android:textSize="11sp" android:letterSpacing="0.12" android:textColor="@color/muted"/>
                 <TextView android:id="@+id/status" android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp" android:text="Connect your fx-CG50" android:textSize="18sp"
+                    android:layout_marginTop="3dp" android:text="Connect your fx-CG50" android:textSize="17sp"
                     android:textStyle="bold" android:textColor="@color/silver" android:accessibilityLiveRegion="polite"/>
                 <TextView android:id="@+id/deviceDetails" android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp" android:text="Use USB Flash mode on the calculator."
+                    android:layout_marginTop="2dp" android:text="Use USB Flash mode on the calculator."
                     android:textColor="@color/muted" android:textSize="13sp"/>
                 <ProgressBar android:id="@+id/progress" style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent" android:layout_height="4dp" android:layout_marginTop="6dp"
                     android:indeterminateTint="@color/cyan" android:visibility="gone"/>
                 <Button android:id="@+id/connect" style="@style/TechButtonPrimary" android:layout_width="match_parent"
-                    android:layout_height="44dp" android:minHeight="0dp" android:layout_marginTop="6dp" android:text="Connect fx-CG50"/>
+                    android:layout_height="38dp" android:minHeight="0dp" android:layout_marginTop="4dp" android:text="Connect fx-CG50"/>
                 <Button android:id="@+id/browse" style="@style/TechButton" android:layout_width="match_parent"
-                    android:layout_height="44dp" android:minHeight="0dp" android:text="Browse calculator" android:enabled="false"/>
+                    android:layout_height="38dp" android:minHeight="0dp" android:text="Browse calculator" android:enabled="false"/>
             </LinearLayout>
 
             <LinearLayout android:id="@+id/browserPanel" android:layout_width="match_parent" android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
             </LinearLayout>
 
             <LinearLayout android:id="@+id/transferPanel" android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:layout_marginTop="8dp" android:background="@drawable/panel" android:padding="10dp" android:orientation="vertical">
+                android:layout_marginTop="5dp" android:background="@drawable/panel" android:padding="8dp" android:orientation="vertical">
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:orientation="horizontal" android:gravity="center_vertical">
                     <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"
