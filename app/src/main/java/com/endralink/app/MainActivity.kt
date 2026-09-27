@@ -90,7 +90,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         findViewById<ArtworkView>(R.id.homeArtwork).configure(R.drawable.hydra_home, 0f, 0.38f)
         findViewById<ArtworkView>(R.id.workspaceHeader).configure(R.drawable.circuit_workspace, 0.07f, 0.225f)
-        applyPhoneResponsiveLayout()
         findViewById<ArtworkView>(R.id.workspaceFooter).configure(R.drawable.circuit_workspace, 0.67f, 1f)
         val navigation = object : OnBackPressedCallback(false) {
             override fun handleOnBackPressed() {
@@ -393,19 +392,6 @@ class MainActivity : AppCompatActivity() {
         findViewById<ProgressBar>(R.id.transferProgress).visibility = if (transferring) View.VISIBLE else View.GONE
     }
 
-
-    /** Keeps the approved tablet composition untouched while scaling phone controls to the same proportions. */
-    private fun applyPhoneResponsiveLayout() {
-        if (resources.configuration.smallestScreenWidthDp >= 600) return
-        val density = resources.displayMetrics.density
-        fun dp(value: Int) = (value * density + 0.5f).toInt()
-        findViewById<View>(R.id.homeBack).layoutParams = findViewById<View>(R.id.homeBack).layoutParams.apply {
-            width = dp(82); height = dp(42)
-        }
-        findViewById<View>(R.id.workspaceHeader).layoutParams = findViewById<View>(R.id.workspaceHeader).layoutParams.apply {
-            height = dp(96)
-        }
-    }
 
     private fun setTransferMode(active: Boolean) {
         transferring = active
