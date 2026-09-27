@@ -1,4 +1,5 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-<item><shape><gradient android:angle="270" android:startColor="#7D8E99" android:centerColor="#1D2A33" android:endColor="#050A0E"/><stroke android:width="1dp" android:color="#D9E6ED"/><corners android:radius="6dp"/></shape></item>
-<item android:left="5dp" android:top="5dp" android:right="5dp" android:bottom="5dp"><shape><gradient android:angle="270" android:startColor="#0A2B3E" android:centerColor="#061724" android:endColor="#020B12"/><stroke android:width="2dp" android:color="#13D8F6"/><corners android:radius="3dp"/></shape></item>
+ <item><shape><gradient android:angle="270" android:startColor="#E1EAF0" android:centerColor="#566A77" android:endColor="#111A21"/><stroke android:width="1dp" android:color="#F4FAFD"/><corners android:radius="2dp"/></shape></item>
+ <item android:left="3dp" android:top="3dp" android:right="3dp" android:bottom="3dp"><shape><solid android:color="#06131E"/><stroke android:width="1dp" android:color="#1D5D79"/><corners android:radius="1dp"/></shape></item>
+ <item android:left="7dp" android:top="7dp" android:right="7dp" android:bottom="7dp"><shape><gradient android:angle="270" android:startColor="#09283B" android:centerColor="#04131E" android:endColor="#02090E"/><stroke android:width="2dp" android:color="#19DDF8"/><corners android:radius="1dp"/></shape></item>
 </layer-list>
