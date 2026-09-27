@@ -32,8 +32,8 @@
     <ScrollView android:id="@+id/workspacePage" android:layout_width="match_parent" android:layout_height="match_parent"
         android:background="@drawable/workspace_background" android:visibility="gone" android:fillViewport="true">
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:orientation="vertical" android:paddingStart="@dimen/workspace_gutter"
-            android:paddingEnd="@dimen/workspace_gutter" android:paddingTop="6dp" android:paddingBottom="20dp"
+            android:orientation="vertical" android:paddingStart="30dp"
+            android:paddingEnd="30dp" android:paddingTop="6dp" android:paddingBottom="20dp"
             android:gravity="center_horizontal">
             <Button android:id="@+id/homeBack" style="@style/TechButton" android:layout_width="82dp" android:layout_height="40dp" android:layout_gravity="end" android:minHeight="0dp" android:minWidth="0dp" android:gravity="center" android:includeFontPadding="true" android:padding="0dp" android:text="HOME" android:textSize="13sp" android:textStyle="bold" android:textColor="#FFFFFF"/>
             <com.endralink.app.ArtworkView android:id="@+id/workspaceHeader"
@@ -90,23 +90,20 @@
 
             <LinearLayout android:id="@+id/transferPanel" android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:layout_marginTop="4dp" android:background="@drawable/panel" android:padding="6dp" android:orientation="vertical">
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:orientation="horizontal" android:gravity="center_vertical">
-                    <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"
-                        android:text="ENDRALINK PHONE FILE MANAGER" android:textStyle="bold" android:textSize="11sp"
-                        android:letterSpacing="0.12" android:textColor="@color/muted"/>
-                    <Button android:id="@+id/collapsePhoneStorage" style="@style/TechButton"
-                        android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Collapse"/>
-                </LinearLayout>
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="ENDRALINK PHONE FILE MANAGER" android:textStyle="bold" android:textSize="11sp"
+                    android:letterSpacing="0.12" android:textColor="@color/muted"/>
                 <LinearLayout android:id="@+id/phoneStorageBody" android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:orientation="vertical">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-                        <Button android:id="@+id/openPhone" style="@style/TechButton"
-                            android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Choose phone folder"/>
-                        <Button android:id="@+id/phoneUp" style="@style/TechButton" android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:layout_marginStart="8dp" android:text="Up" android:enabled="false"/>
-                        <Button android:id="@+id/clearQueue" style="@style/TechButton" android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:layout_marginStart="8dp" android:text="Clear" android:enabled="false"/>
+                    <Button android:id="@+id/openPhone" style="@style/TechButton"
+                        android:layout_width="match_parent" android:layout_height="40dp" android:minHeight="0dp" android:textSize="12sp" android:text="Choose phone folder"/>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
+                        <Button android:id="@+id/phoneUp" style="@style/TechButton" android:layout_width="0dp" android:layout_weight="1"
+                            android:layout_height="38dp" android:minHeight="0dp" android:textSize="12sp" android:text="Up" android:enabled="false"/>
+                        <Button android:id="@+id/clearQueue" style="@style/TechButton" android:layout_width="0dp" android:layout_weight="1"
+                            android:layout_height="38dp" android:minHeight="0dp" android:textSize="12sp" android:layout_marginStart="5dp" android:text="Clear" android:enabled="false"/>
+                        <Button android:id="@+id/collapsePhoneStorage" style="@style/TechButton" android:layout_width="0dp" android:layout_weight="1"
+                            android:layout_height="38dp" android:minHeight="0dp" android:textSize="11sp" android:layout_marginStart="5dp" android:text="Collapse"/>
                     </LinearLayout>
                     <TextView android:id="@+id/phonePath" android:layout_width="match_parent" android:layout_height="wrap_content"
                         android:text="Grant a phone folder once, then browse it here." android:textColor="@color/cyan"
