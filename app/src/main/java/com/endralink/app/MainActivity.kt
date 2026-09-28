@@ -90,7 +90,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         findViewById<ArtworkView>(R.id.homeArtwork).configure(R.drawable.hydra_home, 0f, if (resources.configuration.smallestScreenWidthDp >= 600) 0.49f else 0.69f)
         findViewById<ArtworkView>(R.id.workspaceHeader).configure(R.drawable.circuit_workspace, 0.07f, 0.225f)
-        findViewById<ArtworkView>(R.id.workspaceFooter).configure(R.drawable.circuit_workspace, 0.67f, 1f)
+        findViewById<ArtworkView>(R.id.workspaceFooter).apply {
+            configure(R.drawable.circuit_workspace, 0.67f, 1f)
+            if (resources.configuration.smallestScreenWidthDp < 600) illuminate(0x6633DDFF)
+        }
         val navigation = object : OnBackPressedCallback(false) {
             override fun handleOnBackPressed() {
                 findViewById<View>(R.id.workspacePage).visibility = View.GONE
