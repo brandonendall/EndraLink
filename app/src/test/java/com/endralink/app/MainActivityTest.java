@@ -39,6 +39,7 @@ public class MainActivityTest {
             assertTrue(donate.hasOnClickListeners());
             capture(a, "home");
             captureAt(a, "home_phone_tall", 720, 1600);
+            captureAt(a, "home_phone_tall", 690, 1536);
             captureAt(a, "home_tablet", 1200, 1600);
             a.findViewById(R.id.homeFx).performClick();
             assertEquals(View.VISIBLE, a.findViewById(R.id.workspacePage).getVisibility());
@@ -47,6 +48,7 @@ public class MainActivityTest {
             assertFalse(a.findViewById(R.id.copy).isEnabled());
             capture(a, "workspace");
             captureAt(a, "workspace_phone_tall", 720, 1600);
+            captureAt(a, "workspace_phone_brandon", 690, 1536);
             captureAt(a, "workspace_tablet", 1200, 1600);
             a.getOnBackPressedDispatcher().onBackPressed();
             assertEquals(View.VISIBLE, a.findViewById(R.id.homePage).getVisibility());

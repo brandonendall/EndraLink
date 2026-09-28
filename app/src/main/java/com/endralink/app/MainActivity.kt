@@ -88,9 +88,12 @@ class MainActivity : AppCompatActivity() {
         DebugLog.start(this)
         DebugLog.event("ACTIVITY_CREATE", "restored=" + (savedInstanceState != null))
         setContentView(R.layout.activity_main)
-        findViewById<ArtworkView>(R.id.homeArtwork).configure(R.drawable.hydra_home, 0f, 0.49f)
+        findViewById<ArtworkView>(R.id.homeArtwork).configure(R.drawable.hydra_home, 0f, if (resources.configuration.smallestScreenWidthDp >= 600) 0.49f else 0.69f)
         findViewById<ArtworkView>(R.id.workspaceHeader).configure(R.drawable.circuit_workspace, 0.07f, 0.225f)
-        findViewById<ArtworkView>(R.id.workspaceFooter).configure(R.drawable.circuit_workspace, 0.67f, 1f)
+        findViewById<ArtworkView>(R.id.workspaceFooter).apply {
+            configure(R.drawable.circuit_workspace, 0.67f, 1f)
+            if (resources.configuration.smallestScreenWidthDp < 600) illuminate(0x6633DDFF)
+        }
         val navigation = object : OnBackPressedCallback(false) {
             override fun handleOnBackPressed() {
                 findViewById<View>(R.id.workspacePage).visibility = View.GONE
@@ -103,6 +106,9 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.homeFx).setOnClickListener {
             findViewById<View>(R.id.homePage).visibility = View.GONE
             findViewById<View>(R.id.workspacePage).visibility = View.VISIBLE
+            if (resources.configuration.smallestScreenWidthDp < 600) {
+                findViewById<ScrollView>(R.id.workspacePage).post { findViewById<ScrollView>(R.id.workspacePage).scrollTo(0, 0) }
+            }
             navigation.isEnabled = true
             DebugLog.event("NAVIGATION", "fx_cg50")
         }
@@ -391,6 +397,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.copy).isEnabled = !busy && selectedFiles.isNotEmpty()
         findViewById<ProgressBar>(R.id.transferProgress).visibility = if (transferring) View.VISIBLE else View.GONE
     }
+
 
     private fun setTransferMode(active: Boolean) {
         transferring = active
