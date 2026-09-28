@@ -2,6 +2,8 @@ package com.endralink.app
 
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
 import android.util.AttributeSet
 import android.view.View
 import android.graphics.drawable.Drawable
@@ -15,11 +17,17 @@ class ArtworkView @JvmOverloads constructor(context: Context, attrs: AttributeSe
 
     /** Select a region without modifying the source illustration. */
     fun configure(resource: Int, from: Float, to: Float) {
-        artwork = ContextCompat.getDrawable(context, resource)
+        artwork = ContextCompat.getDrawable(context, resource)?.mutate()
         top = from
         bottom = to
         importantForAccessibility = IMPORTANT_FOR_ACCESSIBILITY_NO
         requestLayout()
+        invalidate()
+    }
+
+    /** Adds a restrained cyan illumination to a specific artwork instance. */
+    fun illuminate(color: Int) {
+        artwork?.colorFilter = PorterDuffColorFilter(color, PorterDuff.Mode.SCREEN)
         invalidate()
     }
 
