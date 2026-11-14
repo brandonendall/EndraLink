@@ -250,7 +250,12 @@ class MainActivity : AppCompatActivity() {
     private fun findCalculator() {
         val devices = usb.deviceList.values.sortedBy { it.deviceName }
         DebugLog.event("USB_ENUMERATE", "count=" + devices.size)
-        devices.forEach { logDevice("USB_DEVICE", it) }
+        devices.forEach {
+            logDevice("USB_DEVICE", it)
+            if (NspireUsbDiagnostics.isNspire(it)) {
+                DebugLog.event("NSPIRE_USB_DESCRIPTOR", NspireUsbDiagnostics.describe(it, usb))
+            }
+        }
         if (devices.isEmpty()) {
             status.text = "No USB device detected. Check the cable and USB adapter."
             details.text = ""
@@ -259,6 +264,13 @@ class MainActivity : AppCompatActivity() {
         val candidates = devices.filter { storageInterface(it) != null }
         DebugLog.event("USB_CANDIDATES", "massStorageCount=" + candidates.size)
         if (candidates.isEmpty()) {
+            val nspire = devices.firstOrNull { NspireUsbDiagnostics.isNspire(it) }
+            if (nspire != null) {
+                status.text = "TI-Nspire detected; this recovery branch is diagnostics-only."
+                details.text = NspireUsbDiagnostics.describe(nspire, usb) +
+                    "\nThe v0.1.24 N-Link native source must be restored before file browsing can be safely enabled."
+                return
+            }
             status.text = "USB detected, but no compatible mass-storage interface. Select USB Flash mode on the fx-CG50, then try again."
             details.text = devices.joinToString("\n") { describe(it) }
             return
