@@ -268,7 +268,7 @@ class MainActivity : AppCompatActivity() {
             if (nspire != null) {
                 status.text = "TI-Nspire detected; this recovery branch is diagnostics-only."
                 details.text = NspireUsbDiagnostics.describe(nspire, usb) +
-                    "\\nThe v0.1.24 N-Link native source must be restored before file browsing can be safely enabled."
+                    "\nThe v0.1.24 N-Link native source must be restored before file browsing can be safely enabled."
                 return
             }
             status.text = "USB detected, but no compatible mass-storage interface. Select USB Flash mode on the fx-CG50, then try again."
