@@ -1,0 +1,27 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Phone-only continuation beneath the Hydra artwork: dark cave/ice floor built entirely from Android shapes. -->
+    <item>
+        <shape>
+            <gradient android:angle="270" android:startColor="#061525" android:centerColor="#03101D" android:endColor="#01070D"/>
+        </shape>
+    </item>
+    <item android:left="0dp" android:right="0dp">
+        <shape>
+            <gradient android:angle="0" android:startColor="#122B3D" android:centerColor="#020A12" android:endColor="#122B3D"/>
+        </shape>
+    </item>
+    <item android:left="14dp" android:right="14dp" android:top="8dp" android:bottom="8dp">
+        <shape>
+            <gradient android:angle="270" android:startColor="#1800B8F0" android:centerColor="#08005A86" android:endColor="#2600D7FF"/>
+            <stroke android:width="1dp" android:color="#354F6C7E"/>
+            <corners android:radius="28dp"/>
+        </shape>
+    </item>
+    <item android:left="30dp" android:right="30dp" android:top="18dp" android:bottom="6dp">
+        <shape>
+            <gradient android:angle="270" android:startColor="#1200DFFF" android:centerColor="#020713" android:endColor="#200087C0"/>
+            <stroke android:width="1dp" android:color="#1F19D5F5"/>
+            <corners android:radius="44dp"/>
+        </shape>
+    </item>
+</layer-list>
